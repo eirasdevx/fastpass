@@ -1,0 +1,15 @@
+# Despliegue en Netlify. Netlify detecta Next.js y aplica su adaptador oficial
+# (@netlify/plugin-nextjs) automáticamente: no hace falta instalar nada más.
+# Las variables de entorno (Supabase, NEXT_PUBLIC_SITE_URL) se ponen en el panel
+# de Netlify, nunca en este archivo. Guía paso a paso: docs/NETLIFY.md
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js 16 necesita Node 20.9 o superior.
+  NODE_VERSION = "22"
+  # Nunca desplegar la demo: el build de producción la rechaza igualmente.
+  NEXT_PUBLIC_DEMO_MODE = "false"
+  NEXT_TELEMETRY_DISABLED = "1"
